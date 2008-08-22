@@ -13,6 +13,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Utility class for file operations.
@@ -21,7 +25,20 @@ import java.io.IOException;
  */
 public class FileUtil {
     
-    
+    public static File resourceToFile(Object context, String resource) throws FileNotFoundException {
+        URL fileURL = context.getClass().getClassLoader().getResource(resource);
+
+        if (fileURL == null) {
+            throw new FileNotFoundException("Couldn't locate resource: " 
+                + resource);
+        }
+        try {
+            return new File(fileURL.toURI());
+        } catch (URISyntaxException ex) {
+            throw new RuntimeException("URL syntax exception", ex);
+        }
+    }
+
     public static String fileToString(File file) throws FileNotFoundException, IOException {
         assert file != null : "fileToString called a null file";
         
@@ -35,5 +52,12 @@ public class FileUtil {
         }
         
         return sb.toString();
+    }
+
+    public static String resourceToString(Object context, String resource) 
+        throws FileNotFoundException, IOException {
+
+        return FileUtil.fileToString(
+            FileUtil.resourceToFile(context, resource));
     }
 }

@@ -4,7 +4,7 @@
   <groupId>thehudgins.org</groupId>
   <artifactId>hudgejar</artifactId>
   <packaging>jar</packaging>
-  <version>0.6.0</version>
+  <version>0.7.0</version>
   <name>hudgejar</name>
   <repositories>
     <repository>
@@ -20,10 +20,10 @@
     </repository>
   </repositories>
   <distributionManagement>
-    <snapshotRepository>
+    <repository>
       <id>droidworks</id>
       <url>dav:http://clamps.droidworks.com:8080/archiva/repository/droidworks/</url>
-    </snapshotRepository>
+    </repository>
   </distributionManagement>
   <url>http://thehudgins.org</url>
   <build>
