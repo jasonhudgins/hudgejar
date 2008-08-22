@@ -1,0 +1,6 @@
+[web]
+description=Jason's Utility classes
+
+[paths]
+default = http://hg.incantations.net/hg/java/net.spy-jutils
+default-push = ssh://eddie//var/www/html/hg.incantations.net/webroot/java/net.spy-jutils
